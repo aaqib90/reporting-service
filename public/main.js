@@ -341,8 +341,6 @@ class PatientOverviewComponent {
         this.error = '';
         this.showErrorDialog = false;
         this.questionHistoryFlag = false;
-        this.currentUserHeaderInfo = JSON.parse(localStorage.getItem('headerObject') || '{}');
-        this.getUnitType = this.currentUserHeaderInfo.unitType;
         this.month = '0';
         this.year = '0';
         this.patientHistoryData = [];
@@ -355,7 +353,6 @@ class PatientOverviewComponent {
         this.addReviewTimeDatesArr = [];
         this.addReviewTimeEntries = [];
         this.addReviewTimeEntry = [];
-        this.siteId = this.currentUserHeaderInfo.siteId;
         /**
          * Pain Score response chart properties
          */
@@ -380,6 +377,7 @@ class PatientOverviewComponent {
                 data: [],
             },
         ];
+        this.loaderService.show();
         this.routeParam = this.route.params.subscribe((params) => {
             this.patientId = params['patientId'];
         }, (error) => {
@@ -994,7 +992,7 @@ class PatientOverviewService {
         this.http = http;
     }
     combinedResponse() {
-        return this.http.get("http://localhost:3001/api/get-report-json?id=31")
+        return this.http.get("/api/get-report-json?id=31")
             .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_0__.timeout)(65000), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((res) => {
             return res;
         }));
