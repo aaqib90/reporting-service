@@ -8,7 +8,7 @@ const path_1 = __importDefault(require("path"));
 const routes_1 = require("./routes");
 const app = (0, express_1.default)();
 // const port: number = 3001
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 /**
  * parse  json from request body
