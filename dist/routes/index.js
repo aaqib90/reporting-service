@@ -8,17 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.route = void 0;
 const express_1 = require("express");
 const NodeCache = require("node-cache");
 const myCache = new NodeCache({ stdTTL: 100 });
 exports.route = (0, express_1.Router)();
-const puppeteer = require("puppeteer");
+const puppeteer_1 = __importDefault(require("../util/puppeteer"));
+let page;
+(0, puppeteer_1.default)().then((p) => {
+    page = p;
+});
 /**
  * Generate pdf api - id as query param
  */
 exports.route.post("/generate-pdf", (req, res) => {
+    console.log("Generate pdf trigger for id : ", req.query.id);
     const body = req.body;
     let pdfId = parseInt(req.query.id);
     myCache.set(pdfId, body, 10000);
@@ -28,8 +36,8 @@ exports.route.post("/generate-pdf", (req, res) => {
         //   "Content-Type": "application/pdf",
         //   "Content-Length": pdf.length,
         // });
-        pdf = pdf.toString('base64');
-        res.send({ data: pdf });
+        const data = pdf.toString("base64");
+        res.send({ data: data });
     })
         .then(() => {
         myCache.del(pdfId);
@@ -53,18 +61,12 @@ exports.route.get("/get-report-json", (req, res) => __awaiter(void 0, void 0, vo
  */
 function printPDF(pdfId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const browser = yield puppeteer.launch({
-            headless: true,
-            defaultViewport: null,
-            args: ['--no-sandbox']
-        });
-        const page = yield browser.newPage();
-        const patientOverviewPageURL = `https://rpsvc.herokuapp.com/#/patient-overview/${pdfId}`;
+        const patientOverviewPageURL = `http://localhost:3001/#/patient-overview/${pdfId}`;
         yield Promise.all([
             yield page.goto(patientOverviewPageURL, {
                 waitUntil: "load",
             }),
-            yield page.waitForNetworkIdle(patientOverviewPageURL)
+            yield page.waitForNetworkIdle(patientOverviewPageURL),
         ]);
         const pdf = yield page.pdf({
             format: "A4",
@@ -73,7 +75,7 @@ function printPDF(pdfId) {
                 bottom: "30px",
             },
         });
-        yield browser.close();
+        //await browser.close();
         return pdf;
     });
 }
