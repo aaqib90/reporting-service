@@ -59,7 +59,7 @@ function printPDF(pdfId) {
             args: ['--no-sandbox']
         });
         const page = yield browser.newPage();
-        const patientOverviewPageURL = `/#/patient-overview/${pdfId}`;
+        const patientOverviewPageURL = `https://rpsvc.herokuapp.com/#/patient-overview/${pdfId}`;
         yield Promise.all([
             yield page.goto(patientOverviewPageURL, {
                 waitUntil: "load",
