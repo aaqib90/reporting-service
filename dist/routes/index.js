@@ -56,6 +56,7 @@ function printPDF(pdfId) {
         const browser = yield puppeteer.launch({
             headless: true,
             defaultViewport: null,
+            args: ['--no-sandbox'] }
         });
         const page = yield browser.newPage();
         const patientOverviewPageURL = `http://localhost:3001/#/patient-overview/${pdfId}`;
