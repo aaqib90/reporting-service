@@ -59,7 +59,7 @@ function printPDF(pdfId) {
             args: ['--no-sandbox']
         });
         const page = yield browser.newPage();
-        const patientOverviewPageURL = `http://localhost:3001/#/patient-overview/${pdfId}`;
+        const patientOverviewPageURL = `/#/patient-overview/${pdfId}`;
         yield Promise.all([
             yield page.goto(patientOverviewPageURL, {
                 waitUntil: "load",
