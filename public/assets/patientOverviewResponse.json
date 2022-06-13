@@ -7,35 +7,35 @@
         {
           "id": 0,
           "name": "F10.221",
-          "value": "Alcohol dependence with intoxication delirium"
+          "description": "Alcohol dependence with intoxication delirium"
         },
         {
           "id": 0,
           "name": "F10.251",
-          "value": "Alcohol dependence with alcohol-induced psychotic disorder with hallucinations"
+          "description": "Alcohol dependence with alcohol-induced psychotic disorder with hallucinations"
         },
         {
           "id": 0,
           "name": "M62.838",
-          "value": "Muscle spasm, other, unspecified"
+          "description": "Muscle spasm, other, unspecified"
         },
         {
           "id": 0,
           "name": "F10.118",
-          "value": "Alcohol abuse with intoxication delirium"
+          "description": "Alcohol abuse with intoxication delirium"
         },
         {
           "id": 0,
           "name": "ffgh",
-          "value": "painscript active and in active"
+          "description": "painscript active and in active"
         },
         {
           "id": 0,
           "name": "F10.121",
-          "value": "Alcohol abuse with intoxication delirium"
+          "description": "Alcohol abuse with intoxication delirium"
         }
       ],
-      "cycle": 21,
+      "cycles": 21,
       "percent": "16%",
       "cycleHistory": [
         {
@@ -59,30 +59,28 @@
           "color": "Red"
         }
       ],
-      "cycleStartDate": "05/27/2022",
       "comorbidities": [
         {
           "id": 0,
           "name": "F17.21",
-          "value": "Nicotine dependence, cigarettes"
+          "description": "Nicotine dependence, cigarettes"
         },
         {
           "id": 0,
           "name": "G543.23",
-          "value": "weed is harmful"
+          "description": "weed is harmful"
         },
         {
           "id": 0,
           "name": "f100.56",
-          "value": "hand pain with swlling"
+          "description": "hand pain with swlling"
         },
         {
           "id": 0,
           "name": "ffc.098",
-          "value": "c active and inactive"
+          "description": "c active and inactive"
         }
       ],
-      "totalDays": 7,
       "phone": "2863433312",
       "dob": "05/01/1928",
       "name": "Rehaan Agrawal",
@@ -91,10 +89,8 @@
       "enrolled": "11/17/2021",
       "height": 155
     },
-"summaryData": {
+    "summaryData": {
       "patientId": 31,
-      "messageCount": 0,
-      "responseCount": 0,
       "questions": [
           {
               "questionText": "Did pain affect your sleep last night?",

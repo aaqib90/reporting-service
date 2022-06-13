@@ -392,7 +392,7 @@ class PatientOverviewComponent {
         this.chartsdata = [];
         this.isMsgs = [];
         this.loaderService.show();
-        this.patientOverviewService.combinedResponse().subscribe((res) => {
+        this.patientOverviewService.combinedResponse(this.patientId).subscribe((res) => {
             var _a, _b, _c, _d, _e, _f;
             if (res != null) {
                 this.loaderService.hide();
@@ -991,8 +991,8 @@ class PatientOverviewService {
     constructor(http) {
         this.http = http;
     }
-    combinedResponse() {
-        return this.http.get("/api/get-report-json?id=31")
+    combinedResponse(patientId) {
+        return this.http.get(`/api/get-report-json?id=${patientId}`)
             .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_0__.timeout)(65000), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)((res) => {
             return res;
         }));
