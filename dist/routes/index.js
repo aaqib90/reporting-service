@@ -61,7 +61,7 @@ exports.route.get("/get-report-json", (req, res) => __awaiter(void 0, void 0, vo
  */
 function printPDF(pdfId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const patientOverviewPageURL = `http://localhost:3001/#/patient-overview/${pdfId}`;
+        const patientOverviewPageURL = `https://rpsvc.herokuapp.com/#/patient-overview/${pdfId}`;
         yield Promise.all([
             yield page.goto(patientOverviewPageURL, {
                 waitUntil: "load",
